@@ -1,3 +1,5 @@
+import re
+
 from flask import abort, redirect, render_template, request
 from http import HTTPStatus
 
@@ -13,7 +15,8 @@ def index_view():
     host_url = request.host_url
     if form.validate_on_submit():
         raw_id_data = form.custom_id.data
-        if not raw_id_data.strip():
+        whitespaces_only = re.compile(r'\ +')
+        if not raw_id_data or whitespaces_only.match(raw_id_data):
             custom_id = get_unique_short_id()
         else:
             custom_id = raw_id_data
