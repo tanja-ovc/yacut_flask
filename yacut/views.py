@@ -1,4 +1,5 @@
 from flask import abort, redirect, render_template, request
+from http import HTTPStatus
 
 from . import app, db
 from .forms import LinkCreationForm
@@ -12,7 +13,7 @@ def index_view():
     host_url = request.host_url
     if form.validate_on_submit():
         raw_id_data = form.custom_id.data
-        if raw_id_data is None or raw_id_data.strip() == '':
+        if not raw_id_data.strip():
             custom_id = get_unique_short_id()
         else:
             custom_id = raw_id_data
@@ -31,6 +32,6 @@ def index_view():
 def long_link_view(custom_id):
     url_map = URL_map.query.filter_by(short=custom_id).first()
     if url_map is None:
-        abort(404)
-    long_url = URL_map.query.filter_by(short=custom_id).first().original
-    return redirect(long_url, code=302)
+        abort(HTTPStatus.NOT_FOUND)
+    long_url = url_map.original
+    return redirect(long_url, code=HTTPStatus.FOUND)
