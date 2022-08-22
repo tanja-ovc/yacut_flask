@@ -8,50 +8,50 @@ YaCut — это сервис укорачивания ссылок. Его на
 
 Если пользователь выбирает сформировать короткую ссылку самостоятельно, то вариант такой ссылки не должен превышать 16 символов после домена. Если пользователь не заполнит поле со своим вариантом короткой ссылки, то сервис сгенерирует её автоматически. Формат для ссылки по умолчанию — шесть случайных символов после домена, например, _aA12cD_, тогда полный адрес будет выглядеть как, например, _http://my.site.ru/aA12cD_.
 
-Проект написан на фреймворке Flask.
+### Технологии
 
+Проект написан на Python 3.7 и фреймворке Flask с использованием HTML-шаблонов.
 
 ### Как запустить сервис локально
 
-```
-git clone 
-```
+Клонируйте репозиторий:
 
-```
-cd yacut
-```
+```git clone https://github.com/tanja-ovc/yacut_flask.git```
 
-Cоздать и активировать виртуальное окружение:
+Убедитесь, что находитесь в директории _yacut_flask/_ либо перейдите в неё:
 
-```
-python3 -m venv venv
-```
+```cd yacut_flask/```
 
-* Если у вас Linux/MacOS
+Cоздайте виртуальное окружение:
 
-    ```
-    source venv/bin/activate
-    ```
+```python3 -m venv venv```
 
-* Если у вас windows
+Активируйте виртуальное окружение:
 
-    ```
-    source venv/scripts/activate
-    ```
+* Если у вас Linux/MacOS:
 
-Установить зависимости из файла requirements.txt:
+    ```source venv/bin/activate```
 
-```
-python3 -m pip install --upgrade pip
-```
+* Если у вас Windows:
 
-```
-pip install -r requirements.txt
-```
+    ```source venv/Scripts/activate```
 
-```
-flask run
-```
+При необходимости обновите pip:
+
+```python3 -m pip install --upgrade pip```
+
+Установите зависимости из файла requirements.txt:
+
+```pip install -r requirements.txt```
+
+Запустите проект:
+
+```flask run```
+
+Превью веб-страницы работающего проекта:
+
+<img width="1202" alt="Screenshot 2022-08-22 at 21 33 12" src="https://user-images.githubusercontent.com/85249138/185993861-6eb5f0b6-dcac-4b40-96cc-0ba23331645e.png">
+
 
 ### Авторы
 Татьяна Овчинникова
